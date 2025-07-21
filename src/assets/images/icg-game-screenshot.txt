@@ -1,0 +1,7 @@
+# ICG Game Screenshot Placeholder
+# 
+# この場所に実際のICGゲームのスクリーンショット画像を配置してください
+# ファイル名: icg-game-screenshot.png
+# 推奨サイズ: 400x300px 以上
+# 
+# 現在は一時的にCSS backgroundでゲーム画面風のスタイルを適用しています
