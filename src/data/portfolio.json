@@ -75,6 +75,25 @@
       "emoji": "⚙️",
       "backgroundImage": "winactor-automation-screenshot.png",
       "hasCustomBackground": true
+    },
+    {
+      "id": "nogamble-monster-battle",
+      "title": "NoGamble Monster Battle",
+      "shortDescription": "運要素を排除した戦略的モンスターバトルゲーム",
+      "description": "運要素を完全に排除し、純粋な戦略性を追求したオンライン対戦型モンスターバトルゲーム。生成AIを活用して開発しました。",
+      "features": [
+        "完全戦略型バトルシステム",
+        "多様なモンスターと能力",
+        "リアルタイムオンライン対戦"
+      ],
+      "notes": [
+        "Render.comの無料枠使用のため起動に時間がかかる場合があります"
+      ],
+      "technologies": ["Vue.js", "Node.js", "Render"],
+      "link": "https://nogamblemonsterbattle-frontend.onrender.com/",
+      "emoji": "⚔️",
+      "backgroundImage": "nogamble-battle-screenshot.png",
+      "hasCustomBackground": true
     }
   ],
   "timeline": [
