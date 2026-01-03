@@ -1,7 +1,7 @@
 <template>
   <section
     id="home"
-    class="min-h-screen flex items-center justify-center bg-gradient-to-br from-primary to-secondary text-white"
+    class="min-h-screen flex items-center justify-center text-white hero-background"
   >
     <div class="text-center px-6 max-w-7xl mx-auto">
       <div
@@ -132,6 +132,41 @@ export default {
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+  }
+}
+
+/* 背景画像のスタイル */
+.hero-background {
+  position: relative;
+  background-image: url('https://www.itmanage.co.jp/column/network-basic-knowledge/img/photo001.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* 背景画像の上に暗いオーバーレイを追加してテキストを読みやすくする */
+.hero-background::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(33, 53, 85, 0.7);
+  z-index: 0;
+}
+
+/* コンテンツをオーバーレイの上に表示 */
+.hero-background > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* モバイルデバイスでは背景をスクロールに固定しない */
+@media (max-width: 768px) {
+  .hero-background {
+    background-attachment: scroll;
   }
 }
 </style>
