@@ -1,3 +1,8 @@
+## 🌐 Links
+
+- **Live Site**: https://shotam27.github.io/portfolio-site/
+- **Repository**: https://github.com/shotam27/portfolio-site
+
 # Portfolio Site
 
 Vue.js + Tailwind CSSで作成したポートフォリオサイト
