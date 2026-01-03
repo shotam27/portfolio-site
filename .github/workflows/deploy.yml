@@ -27,7 +27,6 @@ jobs:
         run: npm ci
 
       - name: Get last commit date
-        id: last-commit
         run: |
           echo "LAST_UPDATED=$(git log -1 --format=%cd --date=iso-strict)" >> $GITHUB_ENV
 
