@@ -11,7 +11,7 @@
         <div class="relative">
           <!-- Timeline line -->
           <div
-            class="absolute left-4 top-0 bottom-0 w-0.5 bg-accent animate-item"
+            class="absolute left-2 sm:left-4 top-0 bottom-0 w-0.5 bg-accent animate-item"
             data-delay="200"
           ></div>
 
@@ -24,10 +24,10 @@
               :data-delay="(index + 2) * 200"
             >
               <div
-                class="absolute left-2 w-4 h-4 bg-primary rounded-full border-4 border-light"
+                class="absolute left-0 sm:left-2 w-4 h-4 bg-primary rounded-full border-4 border-light"
               ></div>
               <div
-                class="ml-12 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
+                class="ml-8 sm:ml-12 bg-white p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow"
               >
                 <h3 class="text-lg font-semibold text-primary mb-2">{{ item.year }}</h3>
                 <p class="text-secondary" :class="{ 'mb-3': item.details }">{{ item.title }}</p>
