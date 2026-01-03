@@ -17,10 +17,13 @@ export default {
     lastUpdated() {
       try {
         const date = new Date(__LAST_UPDATED__)
-        return date.toLocaleDateString('ja-JP', {
+        return date.toLocaleString('ja-JP', {
           year: 'numeric',
           month: '2-digit',
           day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+          timeZone: 'Asia/Tokyo',
         })
       } catch {
         return 'Unknown'
