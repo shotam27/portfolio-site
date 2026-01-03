@@ -26,8 +26,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Get last commit date
+        id: last-commit
+        run: |
+          echo "LAST_UPDATED=$(git log -1 --format=%cd --date=iso-strict)" >> $GITHUB_ENV
+
       - name: Build
         run: npm run build
+        env:
+          VITE_LAST_UPDATED: ${{ env.LAST_UPDATED }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
