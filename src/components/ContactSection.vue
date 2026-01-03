@@ -15,7 +15,7 @@
             :href="`mailto:${contact.email}`"
             class="flex items-center gap-3 bg-primary text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-primary/90 transition-all transform hover:scale-105 shadow-lg"
           >
-            <span class="text-xl">📧</span>
+            <i class="fas fa-envelope text-xl"></i>
             {{ contact.email }}
           </a>
           <a
@@ -24,7 +24,7 @@
             rel="noopener noreferrer"
             class="flex items-center gap-3 bg-gray-800 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:bg-gray-700 transition-all transform hover:scale-105 shadow-lg"
           >
-            <span class="text-xl">🐙</span>
+            <i class="fab fa-github text-xl"></i>
             GitHub
           </a>
         </div>
