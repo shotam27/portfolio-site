@@ -2,6 +2,7 @@
   <section
     id="home"
     class="min-h-screen flex items-center justify-center text-white hero-background"
+    :style="heroStyle"
   >
     <div class="text-center px-6 max-w-7xl mx-auto">
       <div
@@ -39,6 +40,8 @@
 </template>
 
 <script>
+import heroBg from '@/assets/images/hero-bg.png'
+
 export default {
   name: 'HeroSection',
   props: {
@@ -49,6 +52,13 @@ export default {
   },
   mounted() {
     this.setupItemAnimations()
+  },
+  computed: {
+    heroStyle() {
+      return {
+        backgroundImage: `url(${heroBg})`,
+      }
+    },
   },
   methods: {
     setupItemAnimations() {
@@ -138,7 +148,7 @@ export default {
 /* 背景画像のスタイル */
 .hero-background {
   position: relative;
-  background-image: url('https://www.itmanage.co.jp/column/network-basic-knowledge/img/photo001.jpg');
+  /* background-image は script でバインドするためここでは指定しません */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
