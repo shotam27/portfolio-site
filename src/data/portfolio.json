@@ -44,6 +44,29 @@
   ],
   "projects": [
     {
+        "id": "device-management-system",
+        "title": "装置情報管理システム",
+        "shortDescription": "CSVベースの装置情報一元管理プラットフォーム",
+        "description": "複数サービス・装置種別にまたがる装置情報をCSVで一元管理し、効率的な検索・データエクスポート機能を提供するWebアプリケーションです。",
+        "features": [
+            "CSVアップロードによる装置情報の一括登録",
+            "サービス名・装置種別・装置名での柔軟な検索",
+            "カスタマイズ可能なCSVエクスポート機能",
+            "統計情報のリアルタイム表示",
+            "動的テーブル生成による拡張性の高いデータ管理"
+        ],
+        "achievements": [
+            "複数サービスの装置情報を統合管理",
+            "CSV形式での柔軟なデータ入出力を実現",
+            "Docker化による環境構築の簡素化"
+        ],
+        "technologies": ["PHP", "MySQL", "Docker", "JavaScript", "Ajax"],
+        "link": "https://fusion-device-manager.onrender.com",
+        "emoji": "🔧",
+        "backgroundImage": "device-management-screenshot.png",
+        "hasCustomBackground": true
+},
+    {
       "id": "ICG",
       "title": "生き物カードゲーム",
       "shortDescription": "運要素を極限まで排除したオンライン対戦型カードゲーム",
