@@ -8,8 +8,8 @@
           :key="index"
           class="skill-wrapper animate-item"
           :data-delay="index * 100"
-          @mouseenter="hoveredSkill = skill"
-          @mouseleave="hoveredSkill = null"
+          @mouseenter="handleMouseEnter(skill)"
+          @mouseleave="handleMouseLeave"
         >
           <div class="skill-item">
             {{ skill.title }}
@@ -18,9 +18,15 @@
       </div>
 
       <!-- 右側のdescription表示エリア -->
-      <div class="skill-description-area" v-if="hoveredSkill">
-        {{ hoveredSkill.description }}
-      </div>
+      <transition name="description-fade" mode="out-in">
+        <div
+          class="skill-description-area"
+          v-if="hoveredSkill || (!hasHovered || showWelcome)"
+          :key="hoveredSkill ? hoveredSkill.title : 'welcome'"
+        >
+          {{ hoveredSkill ? hoveredSkill.description : "Welcome to Shota's Portfolio Site" }}
+        </div>
+      </transition>
 
       <!-- スクロール用の縦線 -->
       <div class="scroll-line"></div>
@@ -46,12 +52,39 @@ export default {
   data() {
     return {
       hoveredSkill: null,
+      hasHovered: false,
+      showWelcome: true,
+      welcomeTimer: null,
     }
   },
   mounted() {
     this.setupItemAnimations()
   },
+  beforeUnmount() {
+    if (this.welcomeTimer) {
+      clearTimeout(this.welcomeTimer)
+    }
+  },
   methods: {
+    handleMouseEnter(skill) {
+      this.hoveredSkill = skill
+      this.hasHovered = true
+      this.showWelcome = false
+      // タイマーがあればクリア
+      if (this.welcomeTimer) {
+        clearTimeout(this.welcomeTimer)
+        this.welcomeTimer = null
+      }
+    },
+    handleMouseLeave() {
+      this.hoveredSkill = null
+      // 3秒後にWelcomeメッセージを表示
+      if (this.hasHovered) {
+        this.welcomeTimer = setTimeout(() => {
+          this.showWelcome = true
+        }, 3000)
+      }
+    },
     setupItemAnimations() {
       // ヒーローセクションは最初から表示されているので、直接アニメーションを開始
       const items = document.querySelectorAll('.animate-item')
@@ -72,7 +105,8 @@ export default {
   background: linear-gradient(135deg, #2c4a6d 0%, #1e3a5f 100%);
   position: relative;
   overflow: hidden;
-  padding: 30px 0;
+  padding: 0 30px;
+  user-select: none;
 }
 
 /* 左側の縦書きスキルリスト */
@@ -89,7 +123,7 @@ export default {
 
 .skill-wrapper {
   position: relative;
-  cursor: pointer;
+  cursor: default;
 }
 
 .skill-item {
@@ -114,23 +148,39 @@ export default {
   right: 50px;
   top: 33.33%;
   transform: translateY(-50%);
-  color: white;
+  color: #d8c4b6;
   font-size: 16px;
   line-height: 1.8;
   max-width: 50%;
-  opacity: 0;
-  animation: fadeIn 0.3s ease forwards;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-50%) translateX(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(-50%) translateX(0);
-  }
+/* トランジション効果 */
+.description-fade-enter-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.description-fade-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.description-fade-enter-from {
+  opacity: 0;
+  transform: translateY(-50%) translateX(20px);
+}
+
+.description-fade-enter-to {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.description-fade-leave-from {
+  opacity: 1;
+  transform: translateY(-50%) translateX(0);
+}
+
+.description-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-50%) translateX(-20px);
 }
 
 /* スクロール用の縦線 */
@@ -197,7 +247,6 @@ export default {
   .skill-description-area {
     right: 20px;
     font-size: 14px;
-    max-width: 300px;
   }
 
   .scroll-line {
@@ -224,7 +273,6 @@ export default {
   .skill-description-area {
     right: 15px;
     font-size: 12px;
-    max-width: 200px;
   }
 
   .scroll-line {

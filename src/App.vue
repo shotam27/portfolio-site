@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="min-h-screen bg-light">
+  <div id="app" class="min-h-screen bg-light overflow-x-hidden">
     <!-- Navigation -->
     <NavigationComponent
       :site-name="portfolioData.personal.name"
