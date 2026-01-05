@@ -21,7 +21,7 @@
       <transition name="description-fade" mode="out-in">
         <div
           class="skill-description-area"
-          v-if="hoveredSkill || (!hasHovered || showWelcome)"
+          v-if="hoveredSkill || !hasHovered || showWelcome"
           :key="hoveredSkill ? hoveredSkill.title : 'welcome'"
         >
           {{ hoveredSkill ? hoveredSkill.description : "Welcome to Shota's Portfolio Site" }}
