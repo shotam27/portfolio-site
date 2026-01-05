@@ -1,21 +1,19 @@
 <template>
   <div id="app" class="min-h-screen bg-light">
     <!-- Navigation -->
-    <NavigationComponent 
+    <NavigationComponent
       :site-name="portfolioData.personal.name"
       :navigation-items="portfolioData.navigation"
     />
 
     <!-- Hero Section -->
     <div class="fade-section" data-delay="0">
-      <HeroSection 
-        :title="portfolioData.personal.title"
-      />
+      <HeroSection :skills="portfolioData.hero" />
     </div>
 
     <!-- About Section -->
     <div class="fade-section" data-delay="200">
-      <AboutSection 
+      <AboutSection
         :description="portfolioData.personal.description"
         :skills="portfolioData.skills"
         :achievements="portfolioData.achievements"
@@ -34,7 +32,7 @@
 
     <!-- Contact Section -->
     <div class="fade-section" data-delay="800">
-      <ContactSection 
+      <ContactSection
         :future-goals="portfolioData.personal.futureGoals"
         :contact="portfolioData.contact"
       />
@@ -64,17 +62,17 @@ export default {
     ProjectsSection,
     TimelineSection,
     ContactSection,
-    FooterComponent
+    FooterComponent,
   },
   data() {
     return {
-      portfolioData
+      portfolioData,
     }
   },
   mounted() {
     // スクロールアニメーションの設定
     this.setupScrollAnimations()
-    
+
     // Smooth scroll for navigation links
     document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
       anchor.addEventListener('click', function (e) {
@@ -82,7 +80,7 @@ export default {
         const target = document.querySelector(this.getAttribute('href'))
         if (target) {
           target.scrollIntoView({
-            behavior: 'smooth'
+            behavior: 'smooth',
           })
         }
       })
@@ -93,7 +91,7 @@ export default {
       // Intersection Observer の設定
       const observerOptions = {
         threshold: 0.1,
-        rootMargin: '-50px 0px -50px 0px'
+        rootMargin: '-50px 0px -50px 0px',
       }
 
       const observer = new IntersectionObserver((entries) => {
@@ -113,8 +111,8 @@ export default {
       document.querySelectorAll('.fade-section').forEach((section) => {
         observer.observe(section)
       })
-    }
-  }
+    },
+  },
 }
 </script>
 
@@ -159,7 +157,7 @@ html {
   .fade-section:nth-child(odd) {
     transform: translateY(30px);
   }
-  
+
   .fade-section:nth-child(even).fade-in,
   .fade-section:nth-child(odd).fade-in {
     transform: translateY(0);
